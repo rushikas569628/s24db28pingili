@@ -1,6 +1,7 @@
 # s24db28pingili
 hello! i am rushika
-link : <https://s24wb28pingili.onrender.com>
+render link for assignment10 : <https://s24wb28pingili.onrender.com>
+render link for assignment 11: <https://s24db28pingili.onrender.com>
 
 ## Classes and Attributes
 
