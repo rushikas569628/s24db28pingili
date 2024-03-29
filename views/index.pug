@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  div(style="padding: 10px; margin: 10px;")
+    h1(style="color: blue;")= title
+    p(style="color: green;") Welcome to #{title}! hi there it's assignment10
+    button(style="padding: 10px; margin: 10px;",type="button", class="btn btn-warning",onclick="double()") Press me
+  div(id="double")
+    p(style="padding: 10px; padding-top: 0; margin: 10px;", class="text-danger") Up the amount
+  script.
+    var value = 0;
+    var power = 1;
+  
+    function double() {
+      value += 1;
+      power *= 2;
+      document.getElementById("double").innerText = "Two to the power " + value + " is " + power;
+    }
+  

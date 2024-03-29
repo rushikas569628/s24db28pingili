@@ -1,0 +1,24 @@
+extends layout
+
+block content
+ h1(style="color: blue;padding:10px;margin:10px;font-size:25px")= title
+ div.container-fluid 
+   div.row
+     - 
+        let results = [
+          { hat_style: 'Fedora', size: 'Small', price: 39.99 },
+          { hat_style: 'Beanie', size: 'Large', price: 19.99 },
+          { hat_style: 'Sunhat', size: 'Medium', price: 29.99 }
+        ]
+     each hat,index in results
+       div.col-sm-2(onclick=`buy(${index})`)
+        p(style="color:green;") Hat Style: #{hat.hat_style}
+        p(style="color:orange;") Size: #{hat.size}
+        p(style="color:red;") Price: $#{hat.price.toFixed(2)}
+      
+ a(href="/") Back to index
+
+ script.
+  function buy(index) {
+    alert(`You purchased item ${index}`);
+  }

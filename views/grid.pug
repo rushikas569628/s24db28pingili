@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1(style="color: blue;padding:10px;margin:10px;font-size:25px") Grid Display
+  p(style="color:green;padding:10px;margin:10px;font-size:20px") Values of rows: #{query.rows}, cols: #{query.cols}
+
+  - let rows = Number(query.rows)
+  - let cols = Number(query.cols)
+
+  - if (!Number.isInteger(rows) || !Number.isInteger(cols))
+    p Rows and cols must be integers.
+
+  - else if (rows < 3 || rows > 13)
+    p Rows must be between 3 and 13.
+
+  - else if (cols < 3 || cols > 13)
+    p Cols must be between 3 and 13.
+
+  - else
+    table(style="margin: 25px;")#outer
+      - for (let i = 0; i < rows; i++)
+        tr#middle
+          - for (let j = 0; j < cols; j++)
+            td(style="padding: 5px;")= Math.min(i + 1, j + 1)  
