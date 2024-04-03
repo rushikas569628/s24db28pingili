@@ -5,11 +5,7 @@ block content
  div.container-fluid 
    div.row
      - 
-        let results = [
-          { hat_style: 'Fedora', size: 'Small', price: 39.99 },
-          { hat_style: 'Beanie', size: 'Large', price: 19.99 },
-          { hat_style: 'Sunhat', size: 'Medium', price: 29.99 }
-        ]
+        let hat = results
      each hat,index in results
        div.col-sm-2(onclick=`buy(${index})`)
         p(style="color:green;") Hat Style: #{hat.hat_style}

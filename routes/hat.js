@@ -7,3 +7,9 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+var express = require('express');
+const hat_controllers= require('../controllers/hat');
+var router = express.Router();
+/* GET costumes */
+router.get('/', hat_controllers.hat_view_all_Page );
+module.exports = router;

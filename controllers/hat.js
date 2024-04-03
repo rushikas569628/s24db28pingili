@@ -30,4 +30,18 @@ exports.hat_list = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+// VIEWS
+// Handle a show all view
+exports.hat_view_all_Page = async function(req, res) {
+    try{
+    thehat = await hat.find();
+    res.render('hat', { title: 'Hat Search Results', results: thehat });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    
+       
     
