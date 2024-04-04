@@ -12,4 +12,5 @@ const hat_controllers= require('../controllers/hat');
 var router = express.Router();
 /* GET costumes */
 router.get('/', hat_controllers.hat_view_all_Page );
+router.get('/hat', hat_controllers.hat_detail);
 module.exports = router;
