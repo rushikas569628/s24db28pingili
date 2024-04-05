@@ -78,7 +78,7 @@ let toUpdate = await hat.findById( req.params.id)
 // Do updates of properties
 if(req.body.hat_style)
 toUpdate.hat_style = req.body.hat_style;
-if(req.body.price) toUpdate.price = req.body.cost;
+if(req.body.price) toUpdate.price = req.body.price;
 if(req.body.size) toUpdate.size = req.body.size;
 let result = await toUpdate.save();
 console.log("Sucess " + result)
