@@ -19,7 +19,7 @@ res.send('NOT IMPLEMENTED: Hat delete DELETE ' + req.params.id);
 exports.hat_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Hat update PUT' + req.params.id);
 };
-// List of all Costumes
+// List of all hats
 exports.hat_list = async function(req, res) {
     try{
     thehat = await hat.find();
@@ -42,7 +42,7 @@ exports.hat_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
-    //Handle Costume create on POST.
+    //Handle hat create on POST.
 exports.hat_create_post = async function(req, res) {
 console.log(req.body)
 let document = new hat();
@@ -58,7 +58,7 @@ res.status(500);
 res.send(`{"error": ${err}}`);
 }
 };
-// for a specific Costume.
+// for a specific hat.
 exports.hat_detail = async function(req, res) {
 console.log("detail" + req.params.id)
 try {
@@ -69,7 +69,7 @@ res.status(500)
 res.send(`{"error": document for id ${req.params.id} not found`);
 }
 };
-// Handle Costume update form on PUT.
+// Handle hat update form on PUT.
 exports.hat_update_put = async function(req, res) {
 console.log(`update on id ${req.params.id} with body
 ${JSON.stringify(req.body)}`)
@@ -89,6 +89,19 @@ res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
 }
 };
+// Handle hat delete on DELETE.
+exports.hat_delete = async function(req, res) {
+console.log("delete " + req.params.id)
+try {
+result = await hat.findByIdAndDelete( req.params.id)
+console.log("Removed " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": Error deleting ${err}}`);
+}
+};
+
 
     
        
