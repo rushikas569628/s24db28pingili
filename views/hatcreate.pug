@@ -1,18 +1,20 @@
 extends layout
 
 block content
+
   h1= title
+
   form(id='hatForm', action="/resource/hat", method="POST")
     div.form-group
-      label.hatAttr(for='hat_style') hat Style
+      label.hatAttr(for='hat_style') Hat Style
       input#hat_style(type='text', name='hat_style')
     div.form-group
-      label.hatAttr(for='size') hat size
+      label.hatAttr(for='size') Hat size
       input#size(type='text', name='size')
     div.form-group
-      label.hatAttr(for='price') hat price
+      label.hatAttr(for='price') Hat price
       input#price(type='number', name='price')
-    input(type="submit")
+    input(type="submit" class="btn btn-success")
 
   script.
     document.forms['hatForm'].addEventListener('submit', (event) => {
