@@ -16,5 +16,7 @@ router.get('/hat/:id', hat_controllers.hat_detail);
 
 /* GET detail hat page */
 router.get('/detail', hat_controllers.hat_view_one_Page);
+/* GET create costume page */
+router.get('/create', hat_controllers.hat_create_Page);
 
 module.exports = router;
