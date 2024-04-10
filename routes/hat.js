@@ -10,8 +10,11 @@ module.exports = router;
 var express = require('express');
 const hat_controllers= require('../controllers/hat');
 var router = express.Router();
-/* GET costumes */
+/* GET hats */
 router.get('/', hat_controllers.hat_view_all_Page );
 router.get('/hat/:id', hat_controllers.hat_detail);
+
+/* GET detail hat page */
+router.get('/detail', hat_controllers.hat_view_one_Page);
 
 module.exports = router;

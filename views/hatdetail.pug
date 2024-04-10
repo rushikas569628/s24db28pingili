@@ -1,21 +1,24 @@
 extends layout
 block content
- h1= title
+  h1= title
 
- - let hatid = toShow._id
- - let hat_style = toShow.hat_style 
- - let hatprize = toShow.prize
- - let hatsize = toShow.size
-   div
-    div.row
-     div(class='hatAttr mr-3') Hat ID is:
-     div #{hatid}
-    div.row
-     div(class='hatAttr mr-3') hat Style is:
-     div #{hat_style}
-    div.row
-     div(class='hatAttr mr-3') hat Size is:
-     div #{size}
-    div.row
-     div(class='hatAttr mr-3') hat prize is:
-     div #{prize}
+  if toShow == null
+    h2 No instance to show
+  else
+    - let hatid = toShow._id
+    - let hat_style = toShow.hat_style
+    - let size = toShow.size
+    - let price = toShow.price 
+    div
+      div.row
+        div.hatAttr.mr-3 hat ID is:
+        div #{hatid}
+      div.row
+        div.hatAttr.mr-3 hat Style is:
+        div #{hat_style}
+      div.row
+        div.hatAttr.mr-3 hat Size is:
+        div #{size}
+      div.row
+        div.hatAttr.mr-3 hat Price is:
+        div #{price}

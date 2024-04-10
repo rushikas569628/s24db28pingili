@@ -102,6 +102,37 @@ res.send(`{"error": Error deleting ${err}}`);
 }
 };
 
+//s4
+// Handle hat delete on DELETE.
+exports.hat_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await hat.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+
+    //s6
+
+    // Handle a show one view with id specified by query
+exports.hat_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await hat.findById( req.query.id)
+    res.render('hatdetail',
+    { title: 'hat Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    
+
 
     
        
