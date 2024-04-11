@@ -1,6 +1,16 @@
 extends layout
 
 block content
+  style.
+    body {
+      background-color: pink;
+    }
+    .form-group {
+      border: 2px solid black;
+      border-radius:10px; 
+      padding: 10px; 
+      margin-bottom: 10px; 
+    }
 
   h1= title
 
@@ -12,7 +22,7 @@ block content
       label.hatAttr(for='size') Hat size
       input#size(type='text', name='size')
     div.form-group
-      label.hatAttr(for='price') Hat price
+      label.hatAttr(for='price') hat price
       input#price(type='number', name='price')
     input(type="submit" class="btn btn-success")
 
