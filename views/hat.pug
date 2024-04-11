@@ -1,20 +1,34 @@
-extends layout
+//- extends layout
 
-block content
- h1(style="color: blue;padding:10px;margin:10px;font-size:25px")= title
- div.container-fluid(style="background-color:pink;")
-   div.row
-     - 
-        let hat = results
-     each hat,index in results
-       div.col-sm-2(onclick=`buy(${index})`)
-        p(style="color:green;") Hat Style: #{hat.hat_style}
-        p(style="color:orange;") Size: #{hat.size}
-        p(style="color:red;") Price: $#{hat.price.toFixed(2)}
+//- block content
+//-  h1(style="color: blue;padding:10px;margin:10px;font-size:25px")= title
+//-  div.container-fluid(style="background-color:pink;")
+//-    div.row
+//-      - 
+//-         let hat = results
+//-      each hat,index in results
+//-        div.col-sm-2(onclick=`buy(${index})`)
+//-         p(style="color:green;") Hat Style: #{hat.hat_style}
+//-         p(style="color:orange;") Size: #{hat.size}
+//-         p(style="color:red;") Price: $#{hat.price.toFixed(2)}
       
- a(href="/") Back to index
+//-  a(href="/") Back to index
 
- script.
-  function buy(index) {
-    alert(`You purchased item ${index}`);
-  }
+//-  script.
+//-   function buy(index) {
+//-     alert(`You purchased item ${index}`);
+//-   }
+extends layout
+ 
+block content
+  h1= title
+  - let items = results;
+  div(class="container-fluid")
+  div(class="row m-1")
+    each item in items
+      - let destination = `dispatch(\"/hat/update?id=${item._id}\")`
+      div(class="row-sm-2", class="m-1") Item: #{item.hat_style}(#{item.size}) is #{item.price}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
+  script.
+    function dispatch(path){
+      window.location.href=path}
