@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,8 +20,20 @@ router.get('/detail', hat_controllers.hat_view_one_Page);
 /* GET create hat page */
 router.get('/create', hat_controllers.hat_create_Page);
 /* GET create update page */
-router.get('/update', hat_controllers.hat_update_Page);
+// A little function to check if we have an authorized user and continue on or
+// redirect to login.
+const secured = (req, res, next) => {
+if (req.user){
+return next();
+}
+res.redirect("/login");
+}
+router.get('/update',secured, hat_controllers.hat_update_Page);
 /* GET delete hat page */
 router.get('/delete', hat_controllers.hat_delete_Page);
+router.post('/login', passport.authenticate('local'), function(req, res) {
+  res.redirect('/');
+  });
+  
 
 module.exports = router;
