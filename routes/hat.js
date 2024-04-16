@@ -14,23 +14,24 @@ var router = express.Router();
 /* GET hats */
 router.get('/', hat_controllers.hat_view_all_Page );
 router.get('/hat/:id', hat_controllers.hat_detail);
-
+const secured = (req, res, next) => {
+  if (req.user){
+  return next();
+  }
+  res.redirect("/login");
+  }
+  router.get('/update',secured, hat_controllers.hat_update_Page);
 /* GET detail hat page */
-router.get('/detail', hat_controllers.hat_view_one_Page);
+router.get('/detail',secured, hat_controllers.hat_view_one_Page);
 /* GET create hat page */
 router.get('/create', hat_controllers.hat_create_Page);
 /* GET create update page */
 // A little function to check if we have an authorized user and continue on or
 // redirect to login.
-const secured = (req, res, next) => {
-if (req.user){
-return next();
-}
-res.redirect("/login");
-}
-router.get('/update',secured, hat_controllers.hat_update_Page);
+
+
 /* GET delete hat page */
-router.get('/delete', hat_controllers.hat_delete_Page);
+router.get('/delete',secured, hat_controllers.hat_delete_Page);
 router.post('/login', passport.authenticate('local'), function(req, res) {
   res.redirect('/');
   });

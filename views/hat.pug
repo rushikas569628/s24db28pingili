@@ -18,17 +18,52 @@
 //-   function buy(index) {
 //-     alert(`You purchased item ${index}`);
 //-   }
-extends layout
+
+//- extends layout
  
+//- block content
+//-   h1= title
+//-   - let items = results;
+//-   div(class="container-fluid")
+//-   div(class="row m-1")
+//-     each item in items
+//-       - let destination = `dispatch(\"/hat/update?id=${item._id}\")`
+//-       div(class="row-sm-2", class="m-1") Item: #{item.hat_style}(#{item.size}) is #{item.price}
+//-       button.btn( class="btn-primary ml-1", onclick= destination) Update
+//-   script.
+//-     function dispatch(path){
+//-       window.location.href=path}
+
+extends layout
+
 block content
   h1= title
+
+  a.btn.btn-primary(href="/hat/create") Create Guitar
+
   - let items = results;
-  div(class="container-fluid")
-  div(class="row m-1")
-    each item in items
-      - let destination = `dispatch(\"/hat/update?id=${item._id}\")`
-      div(class="row-sm-2", class="m-1") Item: #{item.hat_style}(#{item.size}) is #{item.price}
-      button.btn( class="btn-primary ml-1", onclick= destination) Update
+  each item in items
+    - let updatehat = `dispatch("/hat/update?id=${item._id}")`
+    - let hatDetails = `dispatch("/hat/detail?id=${item._id}")`
+    - let hatDeletion = `dispatch("/hat/delete?id=${item._id}")`
+
+    div
+      p Hat Style - #{item.hat_style}
+      p Hat Size - #{item.size}
+      p Price - #{item.price}
+      button.btn.btn-primary.ml-1(onclick=updatehat) Update
+      button.btn.btn-secondary.ml-1(onclick=hatDetails) Detail
+      button.btn.btn-danger.ml-1(onclick=hatDeletion) Delete
+      br
+      br
+
+  style.
+    .btn {
+      margin-right: 5px; 
+      margin-bottom: 15px;
+    }
+
   script.
     function dispatch(path){
-      window.location.href=path}
+      window.location.href = path;
+    }
