@@ -39,7 +39,7 @@ extends layout
 block content
   h1= title
 
-  a.btn.btn-primary(href="/hat/create") Create Guitar
+  a.btn.btn-primary(href="/hat/create") Create Hat
 
   - let items = results;
   each item in items
@@ -51,7 +51,7 @@ block content
       p Hat Style - #{item.hat_style}
       p Hat Size - #{item.size}
       p Price - #{item.price}
-      button.btn.btn-primary.ml-1(onclick=updatehat) Update
+      button.btn.btn-success.ml-1(onclick=updatehat) Update
       button.btn.btn-secondary.ml-1(onclick=hatDetails) Detail
       button.btn.btn-danger.ml-1(onclick=hatDeletion) Delete
       br
